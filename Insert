@@ -1,0 +1,18 @@
+//Insert function receives data and position of the element in Linked List
+
+
+void insert(int data,int pos){
+    //Node creation
+    struct Node* temp1 = (struct Node*) malloc(sizeof(struct Node));//or Node* temp1 = new Node();
+    temp1 -> data = data;
+    if(pos == 1){
+       temp1 -> next = head; 
+       head = temp1;
+       return;
+    }
+    struct Node* temp2 = head;
+    for(int i=0;i<pos-2;i++)
+        temp2 = temp2 -> next;
+    temp1 -> next = temp2 -> next;
+    temp2 -> next = temp1;
+}

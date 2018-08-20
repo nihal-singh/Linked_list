@@ -12,3 +12,16 @@ void reverse(){
     }
     head = prev;
 }
+
+
+//Using Recursion
+void reverse(struct Node* p){ // p receives the head of list as argument
+    if(p->next == NULL){
+        head = p;
+        return;
+        }
+     reverse(p->next);
+     struct Node* q = p->next;
+     q->next = p;
+     p -> next = NULL;
+ }

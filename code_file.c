@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Create a structure for Linked List
 struct Node{
     int data;
     struct Node* next;
 };
-struct Node* head = NULL;
 
+struct Node* head = NULL; // starting point for the list 
+
+//Insert an element into list
 void insert(int data,int pos){
+    //Node creation
     struct Node* temp1 = (struct Node*) malloc(sizeof(struct Node));//or Node* temp1 = new Node();
     temp1 -> data = data;
     if(pos == 1){
@@ -22,6 +26,7 @@ void insert(int data,int pos){
     temp2 -> next = temp1;
 }
 
+//Delete an element from the list
 void Delete(int pos){
     struct Node* temp1 = head;
     if(pos == 1){
@@ -36,6 +41,21 @@ void Delete(int pos){
     free(temp2);
 }
 
+//Reverse the list
+void reverse(){
+    struct Node *current, *prev, *next;
+    prev = NULL;
+    current = head;
+    while(current != NULL){
+        next = current -> next;
+        current -> next = prev;
+        prev = current ;
+        current = next;
+    }
+    head = prev;
+}
+
+//Print the list
 void print(void){
     struct Node* temp = head;
     printf("Elements in list : ");
@@ -54,8 +74,9 @@ int main(void) {
     printf("Select operation to perform : \n");
     printf("1. Insertion. \n");
     printf("2. Deletion. \n");
-    printf("3. Print List. \n");
-    printf("4. Exit. \n");
+    printf("3. Reverse List \n");
+    printf("4. Print List. \n");
+    printf("5. Exit. \n");
 	printf("Enter your choice : ");
 	scanf("%d",&choice);
 	switch(choice){
@@ -68,12 +89,16 @@ int main(void) {
 	        print();
 	        break;
 	    case 2 :
-	        printf("Position of the element to be deleted :");
+	        printf("Position of the element to be deleted : ");
 	        scanf("%d",&pos);//position of the element to be deleted
 	        Delete(pos);
 	        print();
 	        break;
 	    case 3 :
+	        reverse();
+	        print();
+	        break;
+	    case 4 :
 	        print();
 	        break;
 	    default:
@@ -83,6 +108,5 @@ int main(void) {
 	getchar();
 	ch = getchar();
     }while(ch == 'y');
-	return 0;
+return 0;
 }
-

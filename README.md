@@ -8,5 +8,5 @@ __or__
 * Use __insert method__ for _insertion in List_.
 * __delete method__ for _delete an element from the list_.
 * __reverse method__ for _Reversal of linked list_.
-
+* __Doubly Linked List__ for implementing doubly linked list.
 

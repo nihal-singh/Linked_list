@@ -1,0 +1,65 @@
+/* circular Linked List Implementation */
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+struct Node* head;
+
+struct Node* getNewNode(int data){
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode -> data = data;
+    newNode -> next = head;
+    return newNode;
+}
+//Inserts in the beginning of the list
+void InsertAtHead(int data){
+    struct Node* newNode = getNewNode(data);
+    struct Node* temp = head;
+    //when list is empty
+    if(head == NULL){
+        head = newNode;
+        newNode -> next = head;
+        return;
+    }
+    while(temp->next != head)temp= temp->next; // to update the next pointer of the last node with the current head
+    head = newNode; 
+    temp -> next = head;//points to the updated head of the list
+    
+}
+//Inserts at the last position
+void InsertAtTail(int data){
+    struct Node* newNode = getNewNode(data);
+    struct Node* temp = head;
+    if(head == NULL){
+        head = newNode;
+        newNode -> next = head;
+        return;
+    }
+    while(temp->next != head)
+        temp = temp->next;
+    temp -> next = newNode;
+}
+
+//Prints the whole list
+void print(void){
+    struct Node* temp = head;
+    do{
+        printf("%d ",temp->data);
+        temp = temp -> next;
+    }while(temp != head);
+    printf("\n");
+}
+
+int main(){
+    struct Node* head = NULL;
+    InsertAtHead(2); print();
+    InsertAtTail(8); print();
+    InsertAtHead(10); print();
+    InsertAtTail(5); print();
+    return 0;
+}

@@ -1,0 +1,46 @@
+
+/*
+ * For your reference:
+ *
+ * DoublyLinkedListNode {
+ *     int data;
+ *     DoublyLinkedListNode* next;
+ *     DoublyLinkedListNode* prev;
+ * };
+ *
+ */
+ 
+ // the below function receives head pointer and data to be inserted in the sorted list as arguments.
+ 
+DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data) {
+    DoublyLinkedListNode* newNode = (DoublyLinkedListNode*)malloc(sizeof(DoublyLinkedListNode));
+    newNode -> data = data;
+    newNode -> next = NULL;
+    newNode -> prev = NULL;
+    
+    if(head == NULL){
+        head = newNode;
+        return head;
+    }
+    DoublyLinkedListNode *tempNode = head,*last;
+    while(tempNode != NULL){
+        if(tempNode -> data > data){
+            newNode -> next = tempNode;
+            if(tempNode -> prev == NULL){
+                head = newNode;
+                tempNode -> prev = newNode;
+                return head;            
+            }
+            newNode -> prev = tempNode -> prev;
+            tempNode -> prev -> next = newNode;
+            tempNode -> prev = newNode;            
+            return head;         
+        }
+        last = tempNode;
+        tempNode = tempNode -> next;        
+    }
+    newNode -> prev = last;
+    last -> next = newNode;
+    return head;
+    
+}

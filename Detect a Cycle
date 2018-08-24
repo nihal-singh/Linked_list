@@ -1,0 +1,28 @@
+/*This is a solution to the hackerrank question on Linked list 
+ *https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem
+ */
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+bool has_cycle(SinglyLinkedListNode* head) {
+   if(head == NULL)return false;
+   
+    SinglyLinkedListNode *slow,*fast;
+    slow = head;
+    fast = head -> next;    
+   
+   while(fast ->next != NULL && slow->next != NULL && fast->next->next != NULL){
+        if(slow == fast)return true;
+        slow = slow -> next;
+        fast = fast->next->next;        
+    }
+   
+   return false; 
+}

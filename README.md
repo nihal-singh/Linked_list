@@ -12,4 +12,5 @@ __or__
 * [__circular list__](circular%20list) for insertion in a circular linked list.
 * [__sorted list - insertion__](sorted%20list%20-%20insertion) inserts a given data in the sorted doubly linked list.
 * [__Detect a cycle__](Detect%20a%20Cycle) finds a cycle(_if any_) in a given Linked list.
+* [__balanced_parentheses__](balanced_parentheses) returns _YES_ if the parantheses _{ } , \[ ] , ( )_ are _balanced_ else returns _NO_.
 

@@ -1,0 +1,14 @@
+//balanced parantheses function using the stack library
+
+string isBalanced(string s) {
+     stack<char> temp;
+    for (int i=0;i<s.length();i++){
+        if(s[i] == '(' || s[i] == '[' || s[i] == '{')temp.push(s[i]);
+        else if(!temp.empty()){
+            if((temp.top() == '{' && s[i] == '}') || (temp.top() == '[' && s[i] == ']') || (temp.top() == '(' && s[i] == ')'))temp.pop();
+            else return "NO";
+        }
+        else return "NO";
+    }
+    return temp.empty() ? "YES" : "NO";
+}
